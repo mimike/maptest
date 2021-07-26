@@ -1,0 +1,20 @@
+npm install @material-ui/icons
+npm install @material-ui/core
+npm install node-fetch   // to do 3rd party fetch
+
+npm install --save react-router-dom
+npm install --save-dev @types/react @types/react-dom
+npm install --save-dev typescript @types/react @types/react-dom
+
+npx tsc --init (tsconfig.json in frontend)
+
+create a tsconfig.dev.json file
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react-jsxdev"
+    }
+}
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDztJTZmlpuFXqV1NQRAeKJNSmpk54-bzE&radius=5000&type=lodging&location=41.661129%2C+-91.530167&rankby=prominence
+
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDztJTZmlpuFXqV1NQRAeKJNSmpk54-bzE&radius=5000&type=lodging&location=41.6611%2C+-91.530167&rankby=prominence
