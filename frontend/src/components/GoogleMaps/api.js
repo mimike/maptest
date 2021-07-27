@@ -121,3 +121,107 @@ export const FetchNearbyLodgingData = async () => {
          coordinate
      }
  };
+
+ import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory, Redirect, NavLink, Link } from 'react-router-dom';
+import { thunk_getPictureByDate, thunk_reset } from '../../../store/picOfDay';
+import Loader from "react-loader-spinner";
+import ReactPlayer from 'react-player';
+import getRandomDate from './randomDateFunction.js';
+
+export default function PicByDay () {
+const history = useHistory()
+const dispatch = useDispatch();
+const {date} = useParams();
+    let [loaded, setLoaded] = useState(true);
+    let [errors, setErrors] = useState('');
+
+
+
+async function handleRandomClick() {
+    let randomDate = getRandomDate(1995,2021,1,12);
+    setLoaded(true)
+    await dispatch(thunk_getPictureByDate(randomDate))
+    setLoaded(false)
+    history.push(`/picture-of-the-day/archive/${randomDate}`)
+
+
+}
+
+const goBack = () => {
+
+   history.goBack();
+
+};
+//make pic on home page dynamic of pic of day
+    useEffect(() => {
+        dispatch(thunk_getPictureByDate(date)).then((data) => {
+            if (data?.error) {
+                setErrors(data.error)
+                setLoaded(false);
+            } else {
+                setLoaded(false);
+
+            }
+        })
+    }, [dispatch]);
+
+    const currentImage = useSelector((state) => state.picOfDay.url);
+    const mediaType = useSelector((state) => state.picOfDay.media_type);
+    const HDpic = useSelector((state) => state.picOfDay.hdurl);
+    const curDate = useSelector((state) => state.picOfDay.date);
+    const title = useSelector((state) => state.picOfDay.title);
+    const copyright = useSelector((state) => state.picOfDay.copyright);
+    const explanation = useSelector((state) => state.picOfDay.explanation);
+
+
+
+    if (loaded) {
+        return (
+            <div className='loader'>
+                <h2>Loading...</h2>
+                <Loader
+                    type="ThreeDots"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            </div>
+        )
+    }
+
+    return (
+        <>
+
+            <header className='bg-light text-center pic-header'>
+                <div className='container container--narrow'>
+                    <h2>APOD Archive</h2>
+                    <p>{curDate}</p>
+                </div>
+            </header>
+            <a className='go-back' onClick={goBack} >Go Back</a>
+            <a className='random-date' onClick={handleRandomClick}>Random Date</a>
+            <div className='error_div'>
+                {errors.length ?
+                    errors.map((error, i) => <p key={i}>{error}</p>)
+                    : null
+                }
+            </div>
+
+            <section className='pic-section'>
+                <div className='image-container'>
+                    <p>{title}</p>
+                    {mediaType != 'video' ?
+                    <a href={`${HDpic}`} target='_blank'>
+                        <img className='image' src={currentImage} alt='Nasas photo of the day' ></img>
+                    </a>  : <ReactPlayer url={currentImage} controls={true} />}
+                    {copyright &&
+                        <p className='copyright'>Image Credit & Copyright: {copyright}</p>
+                    }
+                    <p className='explanation'>{explanation}</p>
+                </div>
+            </section>
+        </>
+    )
+}

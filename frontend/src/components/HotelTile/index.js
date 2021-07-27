@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import "./HotelTile.css"
 import {useDispatch, useSelector} from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 import Typography from "@material-ui/core/Typography"
+import "./HotelTile.css"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
 function HotelTile({hotel}){
-
+    
     const reviews = hotel["reviews"]
+
     const hotelName = hotel["name"]
     const hotelWebsite = hotel["website"]
     const hotelAddress = hotel["vicinity"]
@@ -37,20 +37,21 @@ function HotelTile({hotel}){
                 <div className = "tile-container">
                     <div className= "single-hotel-tile">
                         <Typography variant="h3"><a className="hotel-link" href={hotelWebsite}>{hotelName}</a></Typography>
-                        <Typography variant="h3">{hotelAddress}</Typography>
-                        <Typography variant="h4">{hotelPhone}</Typography>
-                        <Typography variant="h4">Reviews {hotelRating}</Typography>
+                        <Typography variant="h5">{hotelAddress}</Typography>
+                        <Typography variant="h5">{hotelPhone}</Typography>
+                        <Typography variant="h5"> {hotelRating ? `Rating ${hotelRating}` : "No rating"}</Typography>
 
-                    {reviews.map(review=> (
-                        <div className = "review-continer">
-                            {/* <h1>{hotel.name}</h1>
-                            <h2>{hotel.address}</h2> */}
-
-                            <Typography variant="h7">{review.text}</Typography>
-                            <Typography>-{review.author_name}</Typography>
-                            <Avatar alt="review author avatar" src={`${review.profile_photo_url}`}  />
+                    {reviews ?  reviews.map(review=> (
+                        <div className = "review-container">
+                            <div style={{marginBottom:"20px"}}>
+                              <Typography variant="h7">{review.text}</Typography>
+                            </div>
+                            <div style={{marginBottom:"30px"}}className = "review-author-box">
+                              <Avatar style={{marginRight:"10px"}} alt="review author avatar" src={`${review.profile_photo_url}`}/>
+                              <Typography variant="h7">{review.author_name}</Typography>
+                            </div>
                         </div>
-                    ))}
+                    )): <h1>No reviews</h1>}
                     </div>
                 </div>
         </>

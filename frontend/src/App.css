@@ -8,7 +8,7 @@
 }
 body {
   font-family: "Lora";
-  background: rgb(243, 243, 243);
+  background: #f5f7f7;
   /* background: linear-gradient(rgba(236, 236, 236, 0.65), rgba(47, 23, 15, 0.65)); */
   background-attachment: fixed;
   background-position: center;
@@ -17,10 +17,9 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: black;
+  /* background: linear-gradient(rgba(253, 253, 253, 0.65), rgb(252, 252, 252)), url('./images/lodging.png'); */
 }
-body img{
-  opacity: 50%;
-}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,10 +34,6 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   color: black;
-}
-
-.App-link {
-  color: #61dafb;
 }

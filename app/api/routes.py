@@ -24,13 +24,13 @@ def api_key(lat, lng):
 
     #data3 = requests.get(f"https://maps.googleapis.com/maps/api/place/details/json?placeid={place_id}&key={google_key}")
 
-    return jsonify(places) 
+    return jsonify(places)
 
-@hotel_routes.route("/search/<string:address>/<string:city>/<string:state>")
-def user_location(address, city, state):
+@hotel_routes.route("/search/<string:location>/")
+def user_location(location):
     google_key = os.environ.get("API_KEY")
      #geocode
-    location = address.replace(" ", "+")+ ",+" + city.replace(" ", "+") + ",+" + state.replace(" ", "+")
+    
     data1 = requests.get(f"https://maps.googleapis.com/maps/api/geocode/json?address={location}&key={google_key}")
     data = data1.json()
     # grab the lat/lng

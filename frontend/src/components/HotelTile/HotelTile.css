@@ -7,10 +7,19 @@
 }
 .single-hotel-tile{
     margin: 20px;
+    max-width: 45em;
 
 }
 .hotel-link{
     text-decoration-line: none;
     color: black;
     cursor: pointer;
+}
+.review-container{
+    margin-top: 30px;
+    margin-bottom: 30px;;
+}
+.review-author-box{
+    display:flex;
+    
 }

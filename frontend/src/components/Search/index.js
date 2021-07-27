@@ -6,11 +6,14 @@ import {useTheme} from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
 import { fetchNearbyLodgingData, fetchGeocoder } from '../../store/hotels';
 import {Typography, Container, Toolbar, AppBar, Card, CardActions, CardContent, CssBaseline, Grid} from "@material-ui/core"
+import GoogleMaps from "../GoogleMaps"
+import Loader from "react-loader-spinner";
 //this search box (they didnt have their location turned on)needs to dispatch fetchGeocoder
 function Search(){
     const dispatch = useDispatch;
     const history = useHistory();
     const [search, setSearch] = useState("")
+    // const [loaded, setLoaded] = useState(false)
     // if there is a search input, we use geoCoder with address else, we use fetchNearbyLodgingData(lat, lng)
     //Hotels (places) component we need to pass search input to Hotels component
 
@@ -27,23 +30,12 @@ function Search(){
     }
     return (
         <>
-            <CssBaseline/>
-            {/* <AppBar position="relative"> */}
-                <Toolbar>
-                    <form onSubmit= {handleSubmit}>
-                        <input
-                        type="text"
-                        autoComplete="off"
-                        id="header-search"
-                        placeholder="Search"
-                        value = {search}
-                        name="s"
-                        onChange = {(e) => {setSearch(e.target.value)}}/>
-                </form>
+            <div>
+                <Typography  variant="h6">Search hotels by your destination</Typography>
+            </div>
+            <GoogleMaps/>
 
 
-             <Typography  variant="h6">Search hotels by your destination</Typography>
-                </Toolbar>
             {/* </AppBar> */}
 
         </>

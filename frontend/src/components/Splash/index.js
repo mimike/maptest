@@ -1,15 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import Search from "../Search"
+import React from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
-import {fetchNearbyLodgingData} from "../../store/hotels"
+import Search from "../Search"
 import Hotels from "../Hotels"
 import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import SaveIcon from '@material-ui/icons/Save'
-import DeleteIcon from '@material-ui/icons/Delete'
-
-import TextField from '@material-ui/core/TextField';
 import Typography from "@material-ui/core/Typography"
 import {makeStyles} from '@material-ui/core/styles'
 import "./Splash.css"
@@ -34,22 +28,21 @@ function Splash(){
     const dispatch = useDispatch();
     const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
 
-
-    const handleClick = () => {
-        history.push("/places")
-    }
+    // const handleClick = () => {
+    //     history.push("/places")
+    // }
 
     return (
         <>
             <div className="App">
                 <header className="App-header">
-                    <Typography variant="h2" component="div" >Welcome to Travelp</Typography>
+                    <Typography variant="h2" component="div" >Welcome to TraVelp</Typography>
                     <Typography variant="h3">A collection of Hotel Reviews</Typography>
-
-                {ButtonStyled(handleClick)}
+                {/* {ButtonStyled(handleClick)} */}
+                    <Hotels className="hotel-container"/>
                 <Search/>
                 </header>
-        </div>
+            </div>
       </>
     )
 }
