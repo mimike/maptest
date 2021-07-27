@@ -17,10 +17,14 @@ function Hotels(){
           fontWeight: "bold",
           fontSize: "16px",
           textTransform: "lowercase",
-          background: "#c41200",
+          background: "#bb1c2c",
+            "&:hover": {
+          background: "blue",
+      },
           padding: '5px 20px',
           marginTop: "20px",
-          marginBottom: "20px"
+          marginBottom: "20px",
+
 
         }
       })
