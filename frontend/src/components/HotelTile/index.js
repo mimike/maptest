@@ -36,21 +36,19 @@ function HotelTile({hotel}){
         <>
                 <div className = "tile-container">
                     <div className= "single-hotel-tile">
-                        <h1><a className="hotel-link" href={hotelWebsite}>{hotelName}</a></h1>
-                        <Typography variant="h2">{hotelAddress}</Typography>
-                        <Typography variant="h2">{hotelPhone}</Typography>
-                        <Typography variant="h3">Reviews {hotelRating}</Typography>
+                        <Typography variant="h3"><a className="hotel-link" href={hotelWebsite}>{hotelName}</a></Typography>
+                        <Typography variant="h3">{hotelAddress}</Typography>
+                        <Typography variant="h4">{hotelPhone}</Typography>
+                        <Typography variant="h4">Reviews {hotelRating}</Typography>
 
                     {reviews.map(review=> (
                         <div className = "review-continer">
                             {/* <h1>{hotel.name}</h1>
                             <h2>{hotel.address}</h2> */}
 
-                            <h3>{review.text}</h3>
-                            <h4>-{review.author_name}</h4>
-                            <Avatar alt="Remy Sharp" src={`${review.profile_photo_url}`}  />
-
-                            <h4>{review.relative_time_description}</h4>
+                            <Typography variant="h7">{review.text}</Typography>
+                            <Typography>-{review.author_name}</Typography>
+                            <Avatar alt="review author avatar" src={`${review.profile_photo_url}`}  />
                         </div>
                     ))}
                     </div>

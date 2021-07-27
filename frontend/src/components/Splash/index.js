@@ -42,12 +42,12 @@ function Splash(){
     return (
         <>
             <div className="App">
-                <Search/>
                 <header className="App-header">
-                    <Typography variant="h3" component="div" >Welcome to Ikigai</Typography>
-                    <Typography variant="h2">Travel's Return</Typography>
+                    <Typography variant="h2" component="div" >Welcome to Travelp</Typography>
+                    <Typography variant="h3">A collection of Hotel Reviews</Typography>
 
                 {ButtonStyled(handleClick)}
+                <Search/>
                 </header>
         </div>
       </>

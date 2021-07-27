@@ -1,6 +1,6 @@
 .tile-container{
-    border: 2px solid yellow;
-    color: white;
+    border-bottom: 1px solid;
+    color: black;
     opacity: 2;
 
     margin: 50px;
@@ -11,6 +11,6 @@
 }
 .hotel-link{
     text-decoration-line: none;
-    color: white;
+    color: black;
     cursor: pointer;
 }

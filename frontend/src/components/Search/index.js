@@ -12,7 +12,6 @@ function Search(){
     const history = useHistory();
     const [search, setSearch] = useState("")
     // if there is a search input, we use geoCoder with address else, we use fetchNearbyLodgingData(lat, lng)
-
     //Hotels (places) component we need to pass search input to Hotels component
 
     const handleSubmit = (e) => {
@@ -29,10 +28,9 @@ function Search(){
     return (
         <>
             <CssBaseline/>
-            <AppBar position="relative">
+            {/* <AppBar position="relative"> */}
                 <Toolbar>
                     <form onSubmit= {handleSubmit}>
-
                         <input
                         type="text"
                         autoComplete="off"
@@ -44,12 +42,10 @@ function Search(){
                 </form>
 
 
-             <Typography  variant="h6">Ikigai</Typography>
+             <Typography  variant="h6">Search hotels by your destination</Typography>
                 </Toolbar>
-            </AppBar>
-            <main>
+            {/* </AppBar> */}
 
-            </main>
         </>
     )
 }
