@@ -1,11 +1,13 @@
 .tile-container{
     border: 2px solid yellow;
-    background-color: rgb(150, 27, 27);
+    color: white;
+    opacity: 2;
+
     margin: 50px;
 }
 .single-hotel-tile{
     margin: 20px;
-    background-color: rgb(22, 68, 22);
+
 }
 .hotel-link{
     text-decoration-line: none;

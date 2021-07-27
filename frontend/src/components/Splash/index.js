@@ -24,16 +24,16 @@ const useStyles = makeStyles({
     }
   })
 
-function ButtonStyled(){
+function ButtonStyled(handleClick){
     const classes = useStyles()
-    return <Button className={classes.root}>test styled</Button>
+    return <Button onClick={handleClick} className={classes.root}>Explore</Button>
 }
 
 function Splash(){
     const history = useHistory();
     const dispatch = useDispatch();
     const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
-    console.log(hotelsData, "nhoteldadta!")
+
 
     const handleClick = () => {
         history.push("/places")
@@ -42,44 +42,14 @@ function Splash(){
     return (
         <>
             <div className="App">
-            <Search/>
-            <Button onClick = {handleClick}>Try this app</Button>
-            <header className="App-header">
-            <Typography variant="h3" component="div" >Welcome to Ikigai</Typography>
-            <Typography variant="h2">Travel's Return</Typography>
-            <ButtonStyled />
+                <Search/>
+                <header className="App-header">
+                    <Typography variant="h3" component="div" >Welcome to Ikigai</Typography>
+                    <Typography variant="h2">Travel's Return</Typography>
 
-            {/* <TextField
-                variant="filled"
-                color="secondary"
-                type="search"
-                styles={{
-                background: "white"
-                }}
-
-                label="Location"
-                value=""
-            /> */}
-
-
-
-            </header>
+                {ButtonStyled(handleClick)}
+                </header>
         </div>
-
-
-        {/* <div className="hotels-container">
-                {hotelsData?.map(hotel => {
-                    return (
-                        <div>
-                            <p>{hotel.result.name}</p>
-
-                        </div>
-                 )
-                })}
-        </div>
-        <div>
-            <Hotels hotelsData = {hotelsData} />
-        </div> */}
       </>
     )
 }
