@@ -22,7 +22,6 @@ export const fetchGeocoder = (address, city, state) => async (dispatch) => {
         dispatch(fetchNearbyLodgingData(lat, lng))
     }
 
-
 }
 
 //Reducer

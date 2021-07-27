@@ -33,19 +33,7 @@ function Splash(){
     const history = useHistory();
     const dispatch = useDispatch();
     const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
-
     console.log(hotelsData, "nhoteldadta!")
-    useEffect(()=> {
-        //dispatch(fetchNearbyLodgingData())
-        navigator.geolocation.getCurrentPosition(function(position) {
-            //console.log("!!!", position.coords.latitude)
-            if(position.coords.latitude){
-                dispatch(fetchNearbyLodgingData(position.coords.latitude, position.coords.longitude))
-            }
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-          });
-    }, [dispatch])
 
     const handleClick = () => {
         history.push("/places")
@@ -55,12 +43,13 @@ function Splash(){
         <>
             <div className="App">
             <Search/>
+            <Button onClick = {handleClick}>Try this app</Button>
             <header className="App-header">
             <Typography variant="h3" component="div" >Welcome to Ikigai</Typography>
             <Typography variant="h2">Travel's Return</Typography>
             <ButtonStyled />
 
-            <TextField
+            {/* <TextField
                 variant="filled"
                 color="secondary"
                 type="search"
@@ -70,28 +59,27 @@ function Splash(){
 
                 label="Location"
                 value=""
-            />
+            /> */}
 
 
 
             </header>
         </div>
-        <button onClick = {handleClick}>explore</button>
 
-        <div className="hotels-container">
+
+        {/* <div className="hotels-container">
                 {hotelsData?.map(hotel => {
                     return (
                         <div>
                             <p>{hotel.result.name}</p>
 
                         </div>
-
                  )
                 })}
         </div>
         <div>
             <Hotels hotelsData = {hotelsData} />
-        </div>
+        </div> */}
       </>
     )
 }
