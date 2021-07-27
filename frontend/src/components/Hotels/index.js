@@ -14,8 +14,10 @@ function Hotels(){
           border: 0,
           borderRadius: 15,
           color: "white",
-        //   background: "black",
-          background: "linear-gradient(45deg, #333, #323232)",
+          fontWeight: "bold",
+          fontSize: "16px",
+          textTransform: "lowercase",
+          background: "#c41200",
           padding: '5px 20px',
           marginTop: "20px",
           marginBottom: "20px"

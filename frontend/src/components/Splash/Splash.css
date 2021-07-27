@@ -15,7 +15,7 @@
 }
 body {
 font-family: "Lora";
-background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65));
+
 background-attachment: fixed;
 background-position: center;
 background-size: cover;
@@ -27,7 +27,7 @@ color: #343a40;
 .hotel-container{
   max-width: 45em;
   text-align: left;
-  
+
 }
 #mainNav .navbar-nav .nav-item .nav-link {
 color: rgba(255,255,255,.7);

@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     root: {
       border: 0,
       borderRadius: 15,
+      marginTop: "10px",
       color: "white",
       background: "linear-gradient(45deg, #333, #999)",
       padding: '5px 20px'
@@ -36,8 +37,18 @@ function Splash(){
         <>
             <div className="App">
                 <header className="App-header">
-                    <Typography variant="h2" component="div" >Welcome to TraVelp</Typography>
-                    <Typography variant="h3">A collection of Hotel Reviews</Typography>
+                    <i className="fas fa-bed" style={{
+                        fontSize:"24px", marginBottom:"-40px", marginTop:"24px", borderRadius: "50%", padding:"20px", background:"slategray", color:"white", fill: "rgb(255, 255, 255)"
+                        }}></i>
+                    
+                    <h1 style={{
+                        fontWeight: "bold700",
+                        marginBottom: "2px",
+                        fontSize: "64px",
+                        fontStyle: "normal",
+                        color: "rgb(28, 187, 155)"
+                    }}>travelp</h1>
+                    <Typography variant="h3">a collection of hotel reviews</Typography>
                 {/* {ButtonStyled(handleClick)} */}
                     <Hotels className="hotel-container"/>
                 <Search/>
