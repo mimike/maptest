@@ -38,3 +38,9 @@ input {
   color: black;
   margin-bottom: 64px;
 }
+a:visited {
+  color: rebeccapurple;
+}
+a{
+  color: black;
+}

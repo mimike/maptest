@@ -18,7 +18,7 @@ const useStyles = makeStyles({
       padding: '5px 20px'
     }
   })
-  
+
 function ButtonStyled(handleClick){
     const classes = useStyles()
     return <Button onClick={handleClick} className={classes.root}>Explore</Button>
@@ -38,7 +38,7 @@ function Splash(){
             <div className="App">
                 <header className="App-header">
                     <i className="fas fa-bed" style={{
-                        fontSize:"24px", marginBottom:"-40px", borderRadius: "50%", padding:"20px", background:"slategray", color:"white", fill: "rgb(255, 255, 255)"
+                        fontSize:"24px", marginTop: "20px", marginBottom:"-40px", borderRadius: "50%", padding:"20px", background:"slategray", color:"white", fill: "rgb(255, 255, 255)"
                         }}></i>
                     {/* <Typography variant="h2" component="div" >TraVelp</Typography> */}
                     <h1 style={{
@@ -48,10 +48,11 @@ function Splash(){
                         fontStyle: "normal",
                         color: "rgb(28, 187, 155)"
                     }}>travelp</h1>
-                    <Typography variant="h3">a collection of hotel reviews</Typography>
+                    <Typography variant="h4">a collection of hotel reviews</Typography>
                 {/* {ButtonStyled(handleClick)} */}
-                    <Hotels className="hotel-container"/>
                 <Search/>
+                    <Hotels className="hotel-container"/>
+
                 </header>
             </div>
       </>

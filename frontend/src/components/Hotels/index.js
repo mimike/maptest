@@ -19,7 +19,7 @@ function Hotels(){
           textTransform: "lowercase",
           background: "#bb1c2c",
             "&:hover": {
-          background: "blue",
+          background: "#c21d1d",
       },
           padding: '5px 20px',
           marginTop: "20px",
