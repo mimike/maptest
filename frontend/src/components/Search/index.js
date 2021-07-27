@@ -31,7 +31,7 @@ function Search(){
     return (
         <>
             <div>
-                <Typography  variant="h6">Search hotels by your destination</Typography>
+                <Typography style={{marginBottom:"20px"}} variant="h6">Search hotels by your destination</Typography>
             </div>
             <GoogleMaps/>
 

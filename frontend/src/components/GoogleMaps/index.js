@@ -117,10 +117,13 @@ function GoogleMaps() {
   //   //   setLoading(false);
   //   // });
   // }
+
+  //we need option.description to get the address.
   return (
     <>
-      <form onSubmit={handleSearch}>
+      <form style={{background:"white"}}onSubmit={handleSearch}>
         <Autocomplete
+
           id="google-map-demo"
           style={{ width: 300 }}
           getOptionLabel={(option) =>

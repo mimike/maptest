@@ -14,13 +14,17 @@ function Hotels(){
           border: 0,
           borderRadius: 15,
           color: "white",
-          background: "linear-gradient(45deg, #333, #999)",
-          padding: '5px 20px'
+        //   background: "black",
+          background: "linear-gradient(45deg, #333, #323232)",
+          padding: '5px 20px',
+          marginTop: "20px",
+          marginBottom: "20px"
+
         }
       })
       function ButtonStyled(handleClick){
         const classes = useStyles()
-        return <Button onClick={handleClick} className={classes.root}>Find hotels nearby</Button>
+        return <Button onClick={handleClick} className={classes.root}>Hotels Near You</Button>
     }
 
     const dispatch = useDispatch();
@@ -48,7 +52,9 @@ function Hotels(){
 
     return (
         <>
+            <div style={{testAlign:"left"}}>
             {ButtonStyled(handleFindNearbyByHotels)}
+            </div>
             {loaded && <div className='loader'>
                 <h2>Loading...</h2>
                 <Loader

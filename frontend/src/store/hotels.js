@@ -21,7 +21,7 @@ export const fetchNearbyLodgingData = (lat, lng) => async (dispatch) => {
 
 export const fetchGeocoder = (location) => async (dispatch) => {
         //console.log(location.replaceAll(",", "").replaceAll(" ", "+"), "LOC")
-        const parsedLocation = location.replaceAll(",", "").replaceAll(" ", "+")
+    const parsedLocation = location.replaceAll(",", "").replaceAll(" ", "+")
 
      const response = await fetch(`/api/hotels/search/${parsedLocation}/`)
      if(response.ok){
