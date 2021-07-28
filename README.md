@@ -13,6 +13,8 @@
 1.  Go to  [https://travelp-review.herokuapp.com/](https://travelp-review.herokuapp.com/)
 2.  Turn your browser location on.
 3.  If not, enter your city, state or full address in the search bar to start exploring nearby lodging!
+4.  
+<a href="https://ibb.co/PwhHzKh"></a>
 
 ## Instructions
 1. Clone repo `git clone https://github.com/mimike/mapstest.git .`
