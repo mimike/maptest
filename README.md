@@ -14,7 +14,8 @@
 2.  Turn your browser location on.
 3.  If not, enter your city, state or full address in the search bar to start exploring nearby lodging!
 4.  
-<a href="https://ibb.co/PwhHzKh"></a>
+
+<a href="https://ibb.co/PwhHzKh"><img src="https://i.ibb.co/9sT536T/Screen-Shot-2021-07-28-at-16-19-15.png" alt="Screen-Shot-2021-07-28-at-16-19-15" border="0"></a>
 
 ## Instructions
 1. Clone repo `git clone https://github.com/mimike/mapstest.git .`
@@ -52,9 +53,10 @@ The [Google Api](https://console.cloud.google.com/apis/library?project=genuine-t
 
 ## To Do
 - [ ] Implement light mode & dark mode
-- [ ] Add aria
+- [ ] Allow users to use the enter to key to search by destination
+- [ ] Implement loading spinner for search by destination option
 - [ ] Add ability to save favorite hotels
-- [ ]
+
 
 ##Deploy to Heroku
 
