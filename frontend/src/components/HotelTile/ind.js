@@ -16,7 +16,6 @@ function HotelTile({hotel}){
   const classes = useStyles()
 
     const reviews = hotel["reviews"]
-
     const hotelName = hotel["name"]
     const hotelWebsite = hotel["website"]
     const hotelAddress = hotel["vicinity"]
@@ -41,8 +40,6 @@ function HotelTile({hotel}){
                               <Avatar style={{marginRight:"10px"}} alt="review author avatar" src={`${review.profile_photo_url}`}/>
                               <Typography variant="h7">{review.author_name}</Typography>
                             </div>}
-
-
                         </div>
                     )): <Typography className={classes.root}> 0 reviews</Typography>}
                     </div>

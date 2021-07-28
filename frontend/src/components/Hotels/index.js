@@ -7,7 +7,6 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 import HotelTile from "../HotelTile"
 import Loader from "react-loader-spinner";
 
-//shows our hotels component aka result //localhost:/PLACES
 function Hotels(){
     const useStyles = makeStyles({
         root: {
@@ -24,8 +23,6 @@ function Hotels(){
           padding: '5px 20px',
           marginTop: "20px",
           marginBottom: "20px",
-
-
         }
       })
       function ButtonStyled(handleClick){
@@ -53,7 +50,6 @@ function Hotels(){
                 })
             })
         }
-
     }
 
     return (

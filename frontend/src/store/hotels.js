@@ -1,13 +1,9 @@
 // const fetch = require('node-fetch')
 const GET_HOTELS = "hotels/GET_HOTELS"
-const LOADING = "hotels/LOADING"
 
 const getHotels= (dataWithReviews) => ({
     type: GET_HOTELS,
     payload: dataWithReviews
-})
-const isLoading = () => ({
-
 })
 
 export const fetchNearbyLodgingData = (lat, lng) => async (dispatch) => {
@@ -17,7 +13,6 @@ export const fetchNearbyLodgingData = (lat, lng) => async (dispatch) => {
     console.log("data!", data)
     dispatch(getHotels(data))
 };
-
 
 export const fetchGeocoder = (location) => async (dispatch) => {
         //console.log(location.replaceAll(",", "").replaceAll(" ", "+"), "LOC")
