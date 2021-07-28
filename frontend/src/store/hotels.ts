@@ -15,7 +15,7 @@ export const fetchNearbyLodgingData = (lat:string, lng:string) => async (dispatc
 };
 // const fetchNearbyLodgingData: (lat: string, lng: string) => (dispatch: any) => Promise<void>
 
-export const fetchGeocoder = (location:string) => async (dispatch:any) => {
+export const fetchGeocoder = (location:string ) => async (dispatch:any) => {
         //console.log(location.replaceAll(",", "").replaceAll(" ", "+"), "LOC")
     const parsedLocation = location.replaceAll(",", "").replaceAll(" ", "+")
      const response = await fetch(`/api/hotels/search/${parsedLocation}/`)
@@ -27,9 +27,12 @@ export const fetchGeocoder = (location:string) => async (dispatch:any) => {
 }
 
 //Reducer
-type ReducerAction = {type:"GET_HOTELS"}
+type ReducerAction = {
+    type:string,
+    payload:object
+}
 const initialState = {}
-export default function hotelsReducers(hotels = initialState, action:ReducerAction){
+export default function hotelsReducers(hotels = initialState, action: ReducerAction ){
     switch(action.type){
         case GET_HOTELS:
             return action.payload

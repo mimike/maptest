@@ -8,8 +8,7 @@ import HotelTile from "../HotelTile"
 import Loader from "react-loader-spinner";
 import PropTypes from "prop-types";
 
-//shows our hotels component aka result //localhost:/PLACES
-const Hotels =(): JSX.Element => {
+function Hotels() {
     const useStyles = makeStyles({
         root: {
           border: 0,
@@ -25,19 +24,18 @@ const Hotels =(): JSX.Element => {
           padding: '5px 20px',
           marginTop: "20px",
           marginBottom: "20px",
-
-
         }
-      }),
-      function ButtonStyled(handleClick){
+      });
+      function ButtonStyled(handleClick: () => void){
         const classes = useStyles()
         return <Button onClick={handleClick} className={classes.root}>Hotels Near You</Button>
     }
 
     const dispatch = useDispatch();
-    const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
+    const hotelsData = Object.values(
+        useSelector((state) =>  state?.hotelsReducer)
+        )
     const [loaded, setLoaded] = useState<boolean>(false)
-
 
     const handleFindNearbyByHotels = async() => {
         setLoaded(true)

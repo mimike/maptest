@@ -10,7 +10,6 @@ const attrs: TypographyProps = {
   variant: "h7" as "inherit"
 }
 
-
 interface Hotel{
   reviews: any
   name: string
@@ -20,7 +19,6 @@ interface Hotel{
   website: string
 }
 function HotelTile({hotel}:{hotel:Hotel}){
-
 
   const useStyles = makeStyles({
     root: {

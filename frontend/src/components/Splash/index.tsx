@@ -18,7 +18,7 @@ const useStyles = makeStyles({
       color: "white",
       background: "red",
       padding: '5px 20px'
-    } as CSSProperties
+    } 
   })
 
 function ButtonStyled(handleClick){
