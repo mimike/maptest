@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button'
 import Typography from "@material-ui/core/Typography"
 import {makeStyles} from '@material-ui/core/styles'
 import "./Splash.css"
+import PropTypes from "prop-types"
+
 
 const useStyles = makeStyles({
     root: {
@@ -16,13 +18,14 @@ const useStyles = makeStyles({
       color: "white",
       background: "red",
       padding: '5px 20px'
-    }
+    } as CSSProperties
   })
 
 function ButtonStyled(handleClick){
     const classes = useStyles()
     return <Button onClick={handleClick} className={classes.root}>Explore</Button>
 }
+
 
 function Splash(){
     const history = useHistory();

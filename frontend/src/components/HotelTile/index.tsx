@@ -2,16 +2,32 @@ import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
-import Typography from "@material-ui/core/Typography"
 import "./HotelTile.css"
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 
-function HotelTile({hotel}){
+const attrs: TypographyProps = {
+  // does this work?
+  variant: "h7" as "inherit"
+}
+
+
+interface Hotel{
+  reviews: any
+  name: string
+  vicinity: string
+  formatted_phone_number: string
+  rating: string
+  website: string
+}
+function HotelTile({hotel}:{hotel:Hotel}){
+
+
   const useStyles = makeStyles({
     root: {
       marginTop: "20px",
       marginBottom: "20px",
       fontFamily: "'Raleway', sans-serif",
-    },
+    }
   });
   const classes = useStyles()
 
@@ -32,14 +48,14 @@ function HotelTile({hotel}){
                         <Typography className={classes.root} variant="h5">{hotelPhone}</Typography>
                         <Typography className={classes.root}variant="h5"> {hotelRating ? `Rating ${hotelRating}` : "No rating"}</Typography>
 
-                    {reviews?  reviews.map(review=> (
-                        <div className = "review-container" className={classes.root}>
+                    {reviews?  reviews.map((review:any)=> (
+                        <div className={`${classes.root} review-container`}>
                             <div style={{marginBottom:"20px"}}>
-                              <Typography variant="h7">{review.text}</Typography>
+                              <Typography {...attrs}>{review.text}</Typography>
                             </div>
                             {!review["text"] ? "" : <div style={{marginBottom:"30px"}}className = "review-author-box">
                               <Avatar style={{marginRight:"10px"}} alt="review author avatar" src={`${review.profile_photo_url}`}/>
-                              <Typography variant="h7">{review.author_name}</Typography>
+                              <Typography {...attrs}>{review.author_name}</Typography>
                             </div>}
 
 

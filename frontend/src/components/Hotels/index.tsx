@@ -6,9 +6,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import HotelTile from "../HotelTile"
 import Loader from "react-loader-spinner";
+import PropTypes from "prop-types";
 
 //shows our hotels component aka result //localhost:/PLACES
-function Hotels(){
+const Hotels =(): JSX.Element => {
     const useStyles = makeStyles({
         root: {
           border: 0,
@@ -27,7 +28,7 @@ function Hotels(){
 
 
         }
-      })
+      }),
       function ButtonStyled(handleClick){
         const classes = useStyles()
         return <Button onClick={handleClick} className={classes.root}>Hotels Near You</Button>
@@ -35,7 +36,8 @@ function Hotels(){
 
     const dispatch = useDispatch();
     const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
-    const [loaded, setLoaded] = useState(false)
+    const [loaded, setLoaded] = useState<boolean>(false)
+
 
     const handleFindNearbyByHotels = async() => {
         setLoaded(true)

@@ -1,3 +1,36 @@
+step 1. npm install --save-dev @types/react @types/react-dom
+step 2. npx tsc --init (tsconfig.json in frontend)
+on line 12 "jsx": "react-jsx"
+
+tsconfig.dev.json
+type this:
+
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react-jsxdev"
+    }
+}
+
+step 3.
+
+const reportWebVitals = (onPerfEntry: any) => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+babel ?? webpack.config.js
+npm i @babel/preset-typescript
+
+export default reportWebVitals;
+
+
 npm install @material-ui/icons
 npm install @material-ui/core
 npm install node-fetch   // to do 3rd party fetch
@@ -104,3 +137,42 @@ const useStyles = makeStyles((theme) => ({
       height: theme.spacing(7),
     },
   }));
+
+
+type AppProps = {
+  message: string;
+  count: number;
+  disabled: boolean;
+  /** array of a type! */
+  names: string[];
+  /** string literals to specify exact string values, with a union type to join them together */
+  status: "waiting" | "success";
+  /** any object as long as you dont use its properties (NOT COMMON but useful as placeholder) */
+  obj: object;
+  obj2: {}; // almost the same as `object`, exactly the same as `Object`
+  /** an object with any number of properties (PREFERRED) */
+  obj3: {
+    id: string;
+    title: string;
+  };
+  /** array of objects! (common) */
+  objArr: {
+    id: string;
+    title: string;
+  }[];
+  /** a dict object with any number of properties of the same type */
+  dict1: {
+    [key: string]: MyTypeHere;
+  };
+  dict2: Record<string, MyTypeHere>; // equivalent to dict1
+  /** any function as long as you don't invoke it (not recommended) */
+  onSomething: Function;
+  /** function that doesn't take or return anything (VERY COMMON) */
+  onClick: () => void;
+  /** function with named prop (VERY COMMON) */
+  onChange: (id: number) => void;
+  /** alternative function type syntax that takes an event (VERY COMMON) */
+  onClick(event: React.MouseEvent<HTMLButtonElement>): void;
+  /** an optional prop (VERY COMMON!) */
+  optional?: OptionalType;
+};

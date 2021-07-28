@@ -17,7 +17,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: black;
-  /* background: linear-gradient(rgba(253, 253, 253, 0.65), rgb(252, 252, 252)), url('./images/lodging.png'); */
+ 
 }
 
 @media (prefers-reduced-motion: no-preference) {
