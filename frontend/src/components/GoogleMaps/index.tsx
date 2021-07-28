@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function GoogleMaps() {
   const classes = useStyles();
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState<{value: any}>([])
   const [inputValue, setInputValue] = useState<string>('')
   const [options, setOptions] = useState([]);
   const loaded = useRef(false);
