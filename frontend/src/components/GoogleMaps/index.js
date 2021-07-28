@@ -15,8 +15,12 @@ function loadScript(src, position, id) {
   if (!position) {
     return;
   }
+  console.log("src", src)
+  console.log("position", position)
+  console.log("id", id)
 
   const script = document.createElement("script");
+  console.log("script", script)
   script.setAttribute("async", "");
   script.setAttribute("id", id);
   script.src = src;
@@ -40,7 +44,7 @@ function GoogleMaps() {
   const loaded = useRef(false);
   const dispatch = useDispatch();
   //const [loading, setLoading] = useState(false);
-
+  console.log("value", value, "setvalue", setValue)
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(fetchGeocoder(value));
