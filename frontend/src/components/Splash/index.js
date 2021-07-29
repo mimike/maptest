@@ -36,7 +36,7 @@ function Splash() {
           </h1>
           <Typography variant="h4">a collection of hotel reviews</Typography>
           <Search />
-          <Hotels className="hotel-container" />
+          <Hotels />
         </header>
       </main>
     </>

@@ -1,8 +1,14 @@
 # Welcome to Travelp!
+## Table of Contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-[Travelp](https://travelp-review.herokuapp.com/) is a hotel finder application that displays hotels nearby.
+## General Info
 
-# Overall Structure
+[Travelp](https://travelp-review.herokuapp.com/) is a hotel finder application that finds reviews of hotels within 15 miles of a user's current location or destination by search.
+
+## Overall Structure
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white%22%3E" /> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white%22/%3E" />
 <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white%22%3E" />
@@ -12,7 +18,7 @@
 <img alt="Flask" src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>
 <img alt="Heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>
 
-## Technologies/Languauges
+## Technologies
 
 - React/Redux
 -  TypeScript
@@ -28,21 +34,23 @@
 
 ## Main Technical Features
 
-Travelp is a web application where users can browse hotels by geolocation or select their destination in a search box.
+Travelp is a web application where users can browse hotel reviews by geolocation or select their destination in a search box.
 
-The Google API was used to collect this data. 
+The Google API was used to collect this data.
 
-If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude with the type set to lodging. The radius is set to 5000 meters. We make second call to Places API with the placeid to collect data on the hotel's reviews. 
+If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude with the type set to lodging. The radius is set to 25140 meters. We make a second call to the Google Places API with the place id to collect data on hotel reviews.
 
-For users who choose to block their location, we collect their latitude and longitude by Geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places. 
+For users who choose to block their location, we collect their latitude and longitude by geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places. Material UI's Autocomplete component with Google Maps API and Places Library.
 
 Here is the route for collecting hotel data for a user's location if they have their browser's location turned on:
 
 <a href="https://ibb.co/f8GTL0K"><img src="https://i.ibb.co/XykGMJd/Screen-Shot-2021-07-28-at-18-27-16.png" alt="Screen-Shot-2021-07-28-at-18-27-16" border="0"></a>
 
-The greatest challenge was...
+The greatest challenge was implementing and learning TypeScript in a short amount of time. 
 
-## Application UI Design
+## UI Design
+
+The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTMl.
 
 
 <a href="https://ibb.co/PwhHzKh"><img src="https://i.ibb.co/9sT536T/Screen-Shot-2021-07-28-at-16-19-15.png" alt="Screen-Shot-2021-07-28-at-16-19-15" border="0"></a>
@@ -50,23 +58,23 @@ The greatest challenge was...
 <a href="https://ibb.co/vzkYQy3"><img src="https://i.ibb.co/Lp15Jjx/Screen-Shot-2021-07-28-at-17-51-43.png" alt="Screen-Shot-2021-07-28-at-17-51-43" border="0"></a>
 <a href="https://ibb.co/BN87WDH"><img src="https://i.ibb.co/dgn3C9s/Screen-Shot-2021-07-28-at-17-53-13.png" alt="Screen-Shot-2021-07-28-at-17-53-13" border="0"></a>
 
-## Architectural Overview
+## High Level Architectural Overview
 
 This app uses the MVC architencture pattern and uses the following technologies:
 
-Model - In this iteration of the app, we do not have databaseGoogle API
+Model - In this iteration of the app, we do not have database that users can post to, our Google API collects the data that we render to the page.
 View - The user interface is rendered by ReactJS.
-Controller - The middle man, interacts with the user, gets data from the model 
+Controller - The middle man, interacts with the user, gets data from the model
 
 ## Near Future Goals
 
-- [ ] Implement light mode & dark mode
-- [ ] Add aria
-- [ ] Add loading spinner to the Enter by Destination option
-- [ ] Allow users to press enter to search Enter by Destination
+- [ ] Implement light mode & dark mode features with Material UI
+- [ ] Allow users to filter options by radius
+- [ ] Add photos of hotels
+- [ ] Allow users to display hotel reviews by highest rating or vicinity
 
 
-## Instructions
+## Setup
 1. Clone repo `git clone https://github.com/mimike/mapstest.git .`
 2. Install dependencies
 
@@ -103,39 +111,3 @@ To run the React App in development, checkout the [README](./react-app/README.md
    psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
-
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-
-2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-3. Run
-
-   ```bash
-   heroku login
-   ```
-
-4. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-5. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-6. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Under Settings find "Config Vars" and add any additional/secret .env variables.
-

@@ -3,8 +3,8 @@ import { fetchNearbyLodgingData } from "../../store/hotels";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import HotelTile from "../HotelTile";
 import Loader from "react-loader-spinner";
+import HotelTile from "../HotelTile";
 
 function Hotels() {
   const useStyles = makeStyles({
@@ -15,9 +15,10 @@ function Hotels() {
       fontWeight: "bold",
       fontSize: "16px",
       textTransform: "lowercase",
-      background: "#bb1c2c",
+      fontFamily: 'Raleway',
+      background: "#00589b",
       "&:hover": {
-        background: "#c21d1d",
+        background: "#1776bf",
       },
       padding: "5px 20px",
       marginTop: "20px",
@@ -47,7 +48,7 @@ function Hotels() {
     });
     const navigatorState = navigatorStatus.state;
     if (navigatorState === "denied") {
-      alert("You must have location enabled to search for hotels.");
+      alert("Travelp would like to use your current location, please choose Allow for your browser location service.");
     } else {
       navigator.geolocation.getCurrentPosition(function (position) {
         setLoaded(true);
