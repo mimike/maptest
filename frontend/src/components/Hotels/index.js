@@ -53,7 +53,7 @@ function Hotels(){
 
     return (
         <>
-            <div style={{testAlign:"left"}}>
+            <div style={{textAlign:"left"}}>
             {ButtonStyled(handleFindNearbyByHotels)}
             </div>
             {loaded && <div className='loader'>
