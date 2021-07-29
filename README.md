@@ -20,8 +20,9 @@
 
 ## Technologies
 
-- React/Redux
--  TypeScript
+- React
+- Redux
+-  JavaScript / TypeScript
 -  Flask
 -  [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview?hl=en_US)
 -  [Geolocation API](https://developers.google.com/maps/documentation/geolocation/overview?hl=en_US)
@@ -46,25 +47,36 @@ Here is the route for collecting hotel data for a user's location if they have t
 
 <a href="https://ibb.co/f8GTL0K"><img src="https://i.ibb.co/XykGMJd/Screen-Shot-2021-07-28-at-18-27-16.png" alt="Screen-Shot-2021-07-28-at-18-27-16" border="0"></a>
 
-The greatest challenge was implementing and learning TypeScript in a short amount of time. 
+The greatest challenge was implementing and learning TypeScript in a short amount of time. I strived to make it work, make it fast and make it clean and made a strategic decision to build something that worked while implementing new libraries and 3rd party APIs. The challenge of debugging TypeScript meant I had to make a critical decision of deploying with Javascript.
 
 ## UI Design
 
 The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTMl.
 
 
-<a href="https://ibb.co/PwhHzKh"><img src="https://i.ibb.co/9sT536T/Screen-Shot-2021-07-28-at-16-19-15.png" alt="Screen-Shot-2021-07-28-at-16-19-15" border="0"></a>
+Mobile View:
+<a href="https://ibb.co/NKmWKkL"><img src="https://i.ibb.co/4pY4pDj/227606128-262422648618433-1726009377737091873-n.png" alt="227606128-262422648618433-1726009377737091873-n" border="0"></a>
+
+
+Desktop View:
+<a href="https://ibb.co/vmPpcF7"><img src="https://i.ibb.co/nfc9wGH/Screen-Shot-2021-07-29-at-10-34-35.png" alt="Screen-Shot-2021-07-29-at-10-34-35" border="0"></a>
+
+Material UI Autocomplete Dropdown:
+
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/Jpw0tWR/Screen-Shot-2021-07-28-at-17-50-31.png" alt="Screen-Shot-2021-07-28-at-17-50-31" border="0"></a>
+
+Loading Indicator:
+
 <a href="https://ibb.co/vzkYQy3"><img src="https://i.ibb.co/Lp15Jjx/Screen-Shot-2021-07-28-at-17-51-43.png" alt="Screen-Shot-2021-07-28-at-17-51-43" border="0"></a>
+
+Hotel Reviews: https
 <a href="https://ibb.co/BN87WDH"><img src="https://i.ibb.co/dgn3C9s/Screen-Shot-2021-07-28-at-17-53-13.png" alt="Screen-Shot-2021-07-28-at-17-53-13" border="0"></a>
 
 ## High Level Architectural Overview
 
-This app uses the MVC architencture pattern and uses the following technologies:
-
-Model - In this iteration of the app, we do not have database that users can post to, our Google API collects the data that we render to the page.
-View - The user interface is rendered by ReactJS.
-Controller - The middle man, interacts with the user, gets data from the model
+This app uses the MVC architencture pattern. In this iteration of the app, we do not have database that users can post to, our Google API collects the data that we render to the page.
+Our view is represented by React rendering to the DOM.
+Finally, the controller- we can think of the controller as the client side JS - the controlling layer between the data and what is presented in the UI.
 
 ## Near Future Goals
 
@@ -90,24 +102,3 @@ Controller - The middle man, interacts with the user, gets data from the model
     - Install packages `npm install`
     - Start dev server `npm start`
     - Note: The [Google API](https://console.cloud.google.com/apis/library?project=genuine-tuner-154003&rif_reserved) was used to collect this data. Create a `.env` file in root dir and add your Google API key as `REACT_APP_API_KEY`
-
-
-
-
-##Deploy to Heroku
-
-To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
