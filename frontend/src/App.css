@@ -1,3 +1,17 @@
+body {
+  font-family: "Lora";
+  background: #f5f7f7;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: black;
+}
+input {
+  color: black;
+}
 .App {
   text-align: center;
 }
@@ -6,41 +20,19 @@
   height: 40vmin;
   pointer-events: none;
 }
-body {
-  font-family: "Lora";
-  background: #f5f7f7;
-  /* background: linear-gradient(rgba(236, 236, 236, 0.65), rgba(47, 23, 15, 0.65)); */
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: black;
-  /* background: linear-gradient(rgba(253, 253, 253, 0.65), rgb(252, 252, 252)), url('./images/lodging.png'); */
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-input {
-  color: black;
-}
 .App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(10px + 2vmin); */
   color: black;
   margin-bottom: 64px;
 }
 a:visited {
   color: rebeccapurple;
 }
-a{
+a {
   color: black;
 }

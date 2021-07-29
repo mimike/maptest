@@ -1,25 +1,22 @@
-import React from 'react';
-import Splash from './components/Splash'
-// import Hotels from "./components/Hotels"
-import { BrowserRouter, Route, Switch} from "react-router-dom";
-import './App.css'
+import React from "react";
+import Splash from "./components/Splash";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 
-function App(){
-
+function App() {
   return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact={true}>
-            <Splash/>
-          </Route>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true}>
+          <Splash />
+        </Route>
 
-          {/* <Route path="/places">
+        {/* <Route path="/places">
             <Hotels/>
           </Route> */}
-
-        </Switch>
+      </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
