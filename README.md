@@ -37,7 +37,7 @@ Travelp is a web application where users can browse hotel reviews by geolocation
 
 The Google API was used to collect this data.
 
-If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude with the type set to lodging. The radius is set to 25140 meters. We make a second call to the Google Places API with the place id to collect data on hotel reviews.
+If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude and the type set to lodging. The radius is set to 25140 meters. We make a second call to the Google Places API with the place id to collect data on hotel reviews.
 
 For users who choose to block their location, we collect their latitude and longitude by geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places. Material UI's Autocomplete component with Google Maps API and Places Library.
 
