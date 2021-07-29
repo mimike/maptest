@@ -1,18 +1,26 @@
-//@ts-nocheck
+
 import React, { useEffect, useState, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles , createStyles, Theme} from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
 //import Loader from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { fetchGeocoder } from "../../store/hotels";
 
-function loadScript(src, position, id) {
+// const useStyles = makeStyles((theme: Theme) => ({
+//   icon: {
+//     color: theme.palette.text.secondary,
+//     marginRight: theme.spacing(2),
+//   },
+// }));
+
+
+function loadScript(src: string, position: HTMLLinkElement, id: string) {
   if (!position) {
     return;
   }
@@ -26,22 +34,37 @@ function loadScript(src, position, id) {
 
 const autocompleteService = { current: null };
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    color: theme.palette.text.secondary,
-    marginRight: theme.spacing(2),
-  },
-}));
+interface LocationType {
+  description: string;
+  structured_formatting: {
+    main_text: string;
+    secondary_text: string;
+    main_text_matched_substrings: [
+      {
+        offset: number;
+        length: number;
+      },
+    ];
+  };
+}
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }),
+);
 function GoogleMaps() {
   const classes = useStyles();
-  const [value, setValue] = useState<{value: any}>([])
+  const [value, setValue] = useState<LocationType | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<LocationType[]>([])
   const loaded = useRef(false);
   const dispatch = useDispatch();
   //const [loading, setLoading] = useState(false);
-
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(fetchGeocoder(value));
@@ -61,8 +84,8 @@ function GoogleMaps() {
 
   const fetch = React.useMemo(
     () =>
-      throttle((request, callback) => {
-        autocompleteService.current.getPlacePredictions(request, callback);
+      throttle((request: { input: string}, callback: (results?: PlaceType[]) => void) => {
+        (autocompleteService.current as any).getPlacePredictions(request, callback);
       }, 200),
     []
   );
@@ -70,9 +93,9 @@ function GoogleMaps() {
   useEffect(() => {
     let active = true;
 
-    if (!autocompleteService.current && window.google) {
+    if (!autocompleteService.current && (window as any).google) {
       autocompleteService.current =
-        new window.google.maps.places.AutocompleteService();
+        new (window as any).google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
       return undefined;
@@ -83,9 +106,9 @@ function GoogleMaps() {
       return undefined;
     }
 
-    fetch({ input: inputValue }, (results) => {
+    fetch({ input: inputValue }, (results?: LocationType[]) => {
       if (active) {
-        let newOptions = [];
+        let newOptions = [] as LocationType[];
 
         if (value) {
           newOptions = [value];

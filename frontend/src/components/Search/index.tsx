@@ -1,10 +1,5 @@
 
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import SearchBar from 'material-ui-search-bar'
-import {useTheme} from '@material-ui/core'
-import { useHistory } from 'react-router-dom';
-import { fetchNearbyLodgingData, fetchGeocoder } from '../../store/hotels';
+import React from 'react';
 import {Typography,  Container, Toolbar, AppBar, Card, CardActions, CardContent, CssBaseline, Grid} from "@material-ui/core"
 import { TypographyProps } from '@material-ui/core/Typography';
 import GoogleMaps from "../GoogleMaps"
@@ -29,12 +24,7 @@ function Search(){
                     // style={{marginTop: "16px", fontWeight:"200"}} variant="h6"
                     >or</Typography>
                 </div>
-
-
             </div>
-
-
-            {/* </AppBar> */}
 
         </>
     )

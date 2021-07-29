@@ -1,31 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {fetchNearbyLodgingData} from "../../store/hotels"
 import {useDispatch, useSelector} from "react-redux";
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import HotelTile from "../HotelTile"
 import Loader from "react-loader-spinner";
-import PropTypes from "prop-types";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      border: 0,
+      borderRadius: 15,
+      color: "white",
+      fontWeight: "bold",
+      fontSize: "16px",
+      textTransform: "lowercase",
+      background: "#bb1c2c",
+        "&:hover": {
+      background: "#c21d1d",
+  },
+      padding: '5px 20px',
+      marginTop: "20px",
+      marginBottom: "20px",
+    },
+
+}),
+);
 
 function Hotels() {
-    const useStyles = makeStyles({
-        root: {
-          border: 0,
-          borderRadius: 15,
-          color: "white",
-          fontWeight: "bold",
-          fontSize: "16px",
-          textTransform: "lowercase",
-          background: "#bb1c2c",
-            "&:hover": {
-          background: "#c21d1d",
-      },
-          padding: '5px 20px',
-          marginTop: "20px",
-          marginBottom: "20px",
-        }
-      });
+
       function ButtonStyled(handleClick: () => void){
         const classes = useStyles()
         return <Button onClick={handleClick} className={classes.root}>Hotels Near You</Button>
