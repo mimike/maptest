@@ -23,19 +23,17 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "20px",
       marginBottom: "20px",
     },
-
 }),
 );
 
 function Hotels() {
-
       function ButtonStyled(handleClick: () => void){
         const classes = useStyles()
         return <Button onClick={handleClick} className={classes.root}>Hotels Near You</Button>
     }
-
     const dispatch = useDispatch();
     const hotelsData = Object.values(
+        // @ts-ignore
         useSelector((state) =>  state?.hotelsReducer)
         )
     const [loaded, setLoaded] = useState<boolean>(false)
@@ -50,7 +48,9 @@ function Hotels() {
         } else {
             navigator.geolocation.getCurrentPosition(function(position) {
                 setLoaded(true)
+                // @ts-ignore
                 dispatch(fetchNearbyLodgingData(position.coords.latitude, position.coords.longitude))
+                // @ts-ignore
                 .then(() => {
                     setLoaded(false)
                 })
@@ -60,8 +60,9 @@ function Hotels() {
     }
 
     return (
-        <>
-            <div style={{testAlign:"left"}}>
+        <div className = "hotel-container">
+
+            <div style={{textAlign:"left"}}>
             {ButtonStyled(handleFindNearbyByHotels)}
             </div>
             {loaded && <div className='loader'>
@@ -77,12 +78,12 @@ function Hotels() {
             <div className="hotels-container" style={{textAlign: "left"}}>
                 {hotelsData?.map(hotel => {
                     return (
+                    // @ts-ignore
                     <HotelTile key={hotel?.id} hotel={hotel.result}  />
                  )
                 })}
             </div>
-
-        </>
+        </div>
     )
 }
 

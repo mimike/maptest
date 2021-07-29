@@ -6,6 +6,7 @@ const rootReducer = combineReducers({
     hotelsReducer
 });
 
+//@ts-ignore
 let enhancer;
 
 if (process.env.NODE_ENV === 'production') {
@@ -13,11 +14,13 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     const logger = require('redux-logger').default;
     const composeEnhancers =
+    //@ts-ignore
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
-
+//@ts-ignore
 const configureStore = (preloadedState) => {
+    //@ts-ignore
     return createStore(rootReducer, preloadedState, enhancer);
 };
 

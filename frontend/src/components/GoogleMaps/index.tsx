@@ -1,24 +1,22 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles , createStyles, Theme} from "@material-ui/core/styles";
+import { makeStyles, Theme} from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
-//import Loader from "react-loader-spinner";
-import { useDispatch} from "react-redux";
-import { fetchGeocoder } from "../../store/hotels";
+import Loader from "react-loader-spinner";
+import { useDispatch, useSelector} from "react-redux";
+import { isLoading, fetchGeocoder } from "../../store/hotels";
 
-// const useStyles = makeStyles((theme: Theme) => ({
-//   icon: {
-//     color: theme.palette.text.secondary,
-//     marginRight: theme.spacing(2),
-//   },
-// }));
-
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.text.secondary,
+    marginRight: theme.spacing(2),
+  },
+}));
 
 function loadScript(src: string, position: HTMLLinkElement, id: string) {
   if (!position) {
@@ -48,33 +46,37 @@ interface LocationType {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-  }),
-);
+interface IState {
+  state: {
+    hotelsReducer: {
+      loading: boolean;
+    }
+  }
+}
 function GoogleMaps() {
   const classes = useStyles();
   const [value, setValue] = useState<LocationType | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
   const [options, setOptions] = useState<LocationType[]>([])
+  const [locationText, setLocationText] = useState<string>('')
   const loaded = useRef(false);
   const dispatch = useDispatch();
-  //const [loading, setLoading] = useState(false);
+
+  const loading = useSelector<boolean>((state: any) => state.hotelsReducer.loading )
+
+  let api_key = process.env.REACT_APP_GOOGLE_KEY
+  //@ts-ignore
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(fetchGeocoder(value));
+    dispatch(isLoading())
+    dispatch(fetchGeocoder(locationText));
   };
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
       loadScript(
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyDztJTZmlpuFXqV1NQRAeKJNSmpk54-bzE&libraries=places",
-        document.querySelector("head"),
+        `https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places`,
+        (document as any).querySelector("head"),
         "google-maps"
       );
     }
@@ -84,7 +86,7 @@ function GoogleMaps() {
 
   const fetch = React.useMemo(
     () =>
-      throttle((request: { input: string}, callback: (results?: PlaceType[]) => void) => {
+      throttle((request: { input: string}, callback: (results?: LocationType[]) => void) => {
         (autocompleteService.current as any).getPlacePredictions(request, callback);
       }, 200),
     []
@@ -127,25 +129,9 @@ function GoogleMaps() {
     };
   }, [value, inputValue, fetch]);
 
-  // const handleHotelSearch = (option) => {
-  //   console.log("options", option);
-  //   // console.log("parts!", parts[0].text +parts[1].text)
-  //   console.log(
-  //     "options!",
-  //     option.structured_formatting.secondary_text.split(", ")
-  //   );
-
-  //   setLoading(true);
-  //   return test(option)
-  //   // dispatch(fetchGeocoder(option.description)).then(() => {
-  //   //   setLoading(false);
-  //   // });
-  // }
-
-  //we need option.description to get the address.
   return (
     <>
-      <form style={{background:"white"}}onSubmit={handleSearch}>
+      <form style={{background:"white"}} onSubmit={handleSearch}>
         <Autocomplete
 
           id="google-map-demo"
@@ -159,12 +145,14 @@ function GoogleMaps() {
           includeInputInList
           filterSelectedOptions
           value={value}
-          onChange={(event, newValue) => {
+          // @ts-ignore
+          onChange= {(newValue: LocationType) => {
             setOptions(newValue ? [newValue, ...options] : options);
             setValue(newValue);
           }}
-          onInputChange={(event, newInputValue) => {
+          onInputChange={(event: any, newInputValue) => {
             setInputValue(newInputValue);
+            setLocationText(event.target.value);
           }}
           renderInput={(params) => (
             <TextField
@@ -215,6 +203,15 @@ function GoogleMaps() {
           }}
         />
       </form>
+      {loading && <div className='loader'>
+                <h2>Loading...</h2>
+                <Loader
+                    type="ThreeDots"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            </div>}
     </>
   );
 }
