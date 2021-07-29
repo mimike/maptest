@@ -29,7 +29,7 @@
 ## How to Use Travelp
 
 1.  Go to  [https://travelp-review.herokuapp.com/](https://travelp-review.herokuapp.com/)
-2.  Turn your browser location on.
+2.  Turn your browser location on to search by location or search by destination.
 
 ## Main Technical Features
 
