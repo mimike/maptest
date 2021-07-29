@@ -1,8 +1,4 @@
 # Welcome to Travelp!
-## Table of Contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
 
 ## General Info
 
@@ -51,30 +47,30 @@ The greatest challenge was implementing and learning TypeScript in a short amoun
 
 ## UI Design
 
-The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTMl.
+The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTML.
 
 
-Mobile View:
+### Mobile View:
 <a href="https://ibb.co/NKmWKkL"><img src="https://i.ibb.co/4pY4pDj/227606128-262422648618433-1726009377737091873-n.png" alt="227606128-262422648618433-1726009377737091873-n" border="0"></a>
 
 
-Desktop View:
+### Desktop View:
 <a href="https://ibb.co/vmPpcF7"><img src="https://i.ibb.co/nfc9wGH/Screen-Shot-2021-07-29-at-10-34-35.png" alt="Screen-Shot-2021-07-29-at-10-34-35" border="0"></a>
 
-Material UI Autocomplete Dropdown:
+### Material UI Autocomplete Dropdown:
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/Jpw0tWR/Screen-Shot-2021-07-28-at-17-50-31.png" alt="Screen-Shot-2021-07-28-at-17-50-31" border="0"></a>
 
-Loading Indicator:
+### Loading Indicator:
 
 <a href="https://ibb.co/vzkYQy3"><img src="https://i.ibb.co/Lp15Jjx/Screen-Shot-2021-07-28-at-17-51-43.png" alt="Screen-Shot-2021-07-28-at-17-51-43" border="0"></a>
 
-Hotel Reviews: https
+### Hotel Reviews: 
 <a href="https://ibb.co/BN87WDH"><img src="https://i.ibb.co/dgn3C9s/Screen-Shot-2021-07-28-at-17-53-13.png" alt="Screen-Shot-2021-07-28-at-17-53-13" border="0"></a>
 
 ## High Level Architectural Overview
 
-This app uses the MVC architencture pattern. In this iteration of the app, we do not have database that users can post to, our Google API collects the data that we render to the page.
+This app uses the MVC architencture pattern. In this iteration of the app, we do not have a database that users can post to, our Google API collects the data that we render to the page.
 Our view is represented by React rendering to the DOM.
 Finally, the controller- we can think of the controller as the client side JS - the controlling layer between the data and what is presented in the UI.
 
@@ -102,3 +98,4 @@ Finally, the controller- we can think of the controller as the client side JS - 
     - Install packages `npm install`
     - Start dev server `npm start`
     - Note: The [Google API](https://console.cloud.google.com/apis/library?project=genuine-tuner-154003&rif_reserved) was used to collect this data. Create a `.env` file in root dir and add your Google API key as `REACT_APP_API_KEY`
+
