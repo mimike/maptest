@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {fetchNearbyLodgingData} from "../../store/hotels"
 import {useDispatch, useSelector} from "react-redux";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Alert, AlertTitle } from '@material-ui/lab';
 import HotelTile from "../HotelTile"
 import Loader from "react-loader-spinner";
 

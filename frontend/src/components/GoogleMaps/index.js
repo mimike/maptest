@@ -8,16 +8,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
 //import Loader from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchGeocoder } from "../../store/hotels";
 
 function loadScript(src, position, id) {
   if (!position) {
     return;
   }
-  console.log("src", src)
-  console.log("position", position)
-  console.log("id", id)
 
   const script = document.createElement("script");
   console.log("script", script)
@@ -36,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const handlePressEnter = (e) => {
+//   if(e.keyCode === 13){
+//       handleCommentSubmit();
+//   }
+//   //then call the api...
+// }
+
 function GoogleMaps() {
   const classes = useStyles();
   const [value, setValue] = useState(null);
@@ -43,22 +47,26 @@ function GoogleMaps() {
   const [options, setOptions] = useState([]);
   const loaded = useRef(false);
   const dispatch = useDispatch();
-  //const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log("value", value, "setvalue", setValue)
+
+  let api_key = process.env.REACT_APP_GOOGLE_KEY
+
   const handleSearch = (e) => {
     e.preventDefault();
+    setLoading(false)
     dispatch(fetchGeocoder(value));
+    setLoading(true)
   };
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
       loadScript(
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyDztJTZmlpuFXqV1NQRAeKJNSmpk54-bzE&libraries=places",
+        `https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places`,
         document.querySelector("head"),
         "google-maps"
-      );
+      )
     }
-
     loaded.current = true;
   }
 
@@ -72,7 +80,6 @@ function GoogleMaps() {
 
   useEffect(() => {
     let active = true;
-
     if (!autocompleteService.current && window.google) {
       autocompleteService.current =
         new window.google.maps.places.AutocompleteService();
@@ -80,7 +87,6 @@ function GoogleMaps() {
     if (!autocompleteService.current) {
       return undefined;
     }
-
     if (inputValue === "") {
       setOptions(value ? [value] : []);
       return undefined;
@@ -93,11 +99,9 @@ function GoogleMaps() {
         if (value) {
           newOptions = [value];
         }
-
         if (results) {
           newOptions = [...newOptions, ...results];
         }
-
         setOptions(newOptions);
       }
     });
@@ -107,27 +111,10 @@ function GoogleMaps() {
     };
   }, [value, inputValue, fetch]);
 
-  // const handleHotelSearch = (option) => {
-  //   console.log("options", option);
-  //   // console.log("parts!", parts[0].text +parts[1].text)
-  //   console.log(
-  //     "options!",
-  //     option.structured_formatting.secondary_text.split(", ")
-  //   );
-
-  //   setLoading(true);
-  //   return test(option)
-  //   // dispatch(fetchGeocoder(option.description)).then(() => {
-  //   //   setLoading(false);
-  //   // });
-  // }
-
-  //we need option.description to get the address.
   return (
     <>
-      <form style={{background:"white"}}onSubmit={handleSearch}>
+      <form id="search-form" style={{background:"white"}} onSubmit={handleSearch}>
         <Autocomplete
-
           id="google-map-demo"
           style={{ width: 300 }}
           getOptionLabel={(option) =>
@@ -136,9 +123,12 @@ function GoogleMaps() {
           filterOptions={(x) => x}
           options={options}
           autoComplete
+          loading={loading}
+          loadingText
           includeInputInList
           filterSelectedOptions
           value={value}
+
           onChange={(event, newValue) => {
             setOptions(newValue ? [newValue, ...options] : options);
             setValue(newValue);
@@ -199,6 +189,22 @@ function GoogleMaps() {
   );
 }
 export default GoogleMaps;
+  // const handleHotelSearch = (option) => {
+  //   console.log("options", option);
+  //   console.log("parts!", parts[0].text +parts[1].text)
+  //   .log(
+  //    "options!",
+  //    option.structured_formatting.secondary_text.split(", ")
+  //    );
+
+  //   setLoading(true);
+  //   //return test(option)
+  //   dispatch(fetchGeocoder(option.description)).then(() => {
+  //      setLoading(false);
+  //    });
+  // }
+
+  //we need option.description to get the address.
 
 // import React, { useEffect, useState, useRef } from "react";
 // import TextField from "@material-ui/core/TextField";

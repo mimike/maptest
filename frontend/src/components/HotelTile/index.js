@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 import Typography from "@material-ui/core/Typography"
@@ -16,7 +15,6 @@ function HotelTile({hotel}){
   const classes = useStyles()
 
     const reviews = hotel["reviews"]
-
     const hotelName = hotel["name"]
     const hotelWebsite = hotel["website"]
     const hotelAddress = hotel["vicinity"]
