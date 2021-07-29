@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Welcome to Travelp!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Travelp](https://travelp-review.herokuapp.com/) is a hotel finder application that displays hotels nearby.
 
-## Available Scripts
+# Overall Structure
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white%22%3E" /> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white%22/%3E" />
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white%22%3E" />
+<img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
+<img alt="Python" src="https://img.shields.io/badge/python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white"/>
+<img alt="Material UI" src="https://img.shields.io/badge/materialui-%230081CB.svg?style=for-the-badge&logo=material-ui&logoColor=white"/>
+<img alt="Flask" src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>
+<img alt="Heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>
 
-In the project directory, you can run:
+## Technologies/Languauges
 
-### `yarn start`
+- React/Redux
+-  TypeScript
+-  Flask
+-  [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview?hl=en_US)
+-  [Geolocation API](https://developers.google.com/maps/documentation/geolocation/overview?hl=en_US)
+-  [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview?hl=en_US)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to Use Travelp
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1.  Go to  [https://travelp-review.herokuapp.com/](https://travelp-review.herokuapp.com/)
+2.  Turn your browser location on.
 
-### `yarn test`
+## Main Technical Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Travelp is a web application where users can browse hotels by geolocation or select their destination in a search box.
 
-### `yarn build`
+The Google API was used to collect this data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude with the type set to lodging. The radius is set to 5000 meters. We make second call to Places API with the placeid to collect data on the hotel's reviews.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For users who choose to block their location, we collect their latitude and longitude by Geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Here is the route for collecting hotel data for a user's location if they have their browser's location turned on:
 
-### `yarn eject`
+<a href="https://ibb.co/f8GTL0K"><img src="https://i.ibb.co/XykGMJd/Screen-Shot-2021-07-28-at-18-27-16.png" alt="Screen-Shot-2021-07-28-at-18-27-16" border="0"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The greatest challenge was...
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Application UI Design
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<a href="https://ibb.co/PwhHzKh"><img src="https://i.ibb.co/9sT536T/Screen-Shot-2021-07-28-at-16-19-15.png" alt="Screen-Shot-2021-07-28-at-16-19-15" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Jpw0tWR/Screen-Shot-2021-07-28-at-17-50-31.png" alt="Screen-Shot-2021-07-28-at-17-50-31" border="0"></a>
+<a href="https://ibb.co/vzkYQy3"><img src="https://i.ibb.co/Lp15Jjx/Screen-Shot-2021-07-28-at-17-51-43.png" alt="Screen-Shot-2021-07-28-at-17-51-43" border="0"></a>
+<a href="https://ibb.co/BN87WDH"><img src="https://i.ibb.co/dgn3C9s/Screen-Shot-2021-07-28-at-17-53-13.png" alt="Screen-Shot-2021-07-28-at-17-53-13" border="0"></a>
 
-## Learn More
+## Architectural Overview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This app uses the MVC architencture pattern and uses the following technologies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Model - In this iteration of the app, we do not have databaseGoogle API
+View - The user interface is rendered by ReactJS.
+Controller - The middle man, interacts with the user, gets data from the model
 
-### Code Splitting
+## Near Future Goals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [ ] Implement light mode & dark mode
+- [ ] Add aria
+- [ ] Add loading spinner to the Enter by Destination option
+- [ ] Allow users to press enter to search Enter by Destination
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Instructions
+1. Clone repo `git clone https://github.com/mimike/mapstest.git .`
+2. Install dependencies
 
-### Making a Progressive Web App
+      ```bash
+      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+      ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Create a **.env** file based on the example with proper settings for your
+   development environment
 
-### Advanced Configuration
+4. Create a **.env** file based on the example with proper settings for your
+   development environment
+    - Install packages `npm install`
+    - Start dev server `npm start`
+    - Note: The [Google API](https://console.cloud.google.com/apis/library?project=genuine-tuner-154003&rif_reserved) was used to collect this data. Create a `.env` file in root dir and add your Google API key as `REACT_APP_API_KEY`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+##Deploy to Heroku
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+
+***
+*IMPORTANT!*
+   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
+   You can do this by running:
+
+   ```bash
+   pipenv lock -r > requirements.txt
+   ```
+
+*ALSO IMPORTANT!*
+   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
+   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+***
+
+
+## Deploy to Heroku
+
+1. Create a new project on Heroku
+
+2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+3. Run
+
+   ```bash
+   heroku login
+   ```
+
+4. Login to the heroku container registry
+
+   ```bash
+   heroku container:login
+   ```
+
+5. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
+   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
+6. Push your docker container to heroku from the root directory of your project.
+   This will build the dockerfile and push the image to your heroku container registry
+
+   ```bash
+   heroku container:push web -a {NAME_OF_HEROKU_APP}
+   ```
+
+8. Release your docker container to heroku
+
+   ```bash
+   heroku container:release web -a {NAME_OF_HEROKU_APP}
+   ```
+
+9. Under Settings find "Config Vars" and add any additional/secret .env variables.
+
