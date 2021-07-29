@@ -100,6 +100,6 @@ Finally, the controller- we can think of the controller as the client side JS - 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
     - Start backend server `flask run`
-    - Start client server `npm start`
+    - Start client server in the frontend directory `npm start`
     - Note: The [Google API](https://console.cloud.google.com/apis/library?project=genuine-tuner-154003&rif_reserved) was used to collect this data. Create a `.env` file in root dir and add your Google API key as `REACT_APP_API_KEY`
 
