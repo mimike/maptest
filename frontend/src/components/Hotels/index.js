@@ -30,7 +30,7 @@ function Hotels(){
     }
 
     const dispatch = useDispatch();
-    const hotelsData = Object.values(useSelector(state => state?.hotelsReducer))
+    const hotelsData = useSelector(state => state?.hotelsReducer?.currentHotels)
     const [loaded, setLoaded] = useState(false)
 
     const handleFindNearbyByHotels = async() => {

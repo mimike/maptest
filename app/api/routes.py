@@ -11,9 +11,7 @@ api_key = os.environ.get("API_KEY")
 def hotel_data(lat, lng):
     google_key = os.environ.get("API_KEY")
     #geolocator
-
     # places
-    
     response = requests.get(f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key={google_key}&radius=5000&type=lodging&location={lat}%2C+{lng}&rankby=prominence")
     data = response.json()
     place_id_list = [place["place_id"] for place in data["results"]]

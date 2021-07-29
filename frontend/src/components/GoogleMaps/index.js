@@ -7,9 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
-//import Loader from "react-loader-spinner";
-import { useDispatch } from "react-redux";
-import { fetchGeocoder } from "../../store/hotels";
+import Loader from "react-loader-spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { isLoading, fetchGeocoder } from "../../store/hotels";
+
 
 function loadScript(src, position, id) {
   if (!position) {
@@ -44,19 +45,21 @@ function GoogleMaps() {
   const classes = useStyles();
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [locationText, setLocationText] = useState("");
   const [options, setOptions] = useState([]);
   const loaded = useRef(false);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  console.log("value", value, "setvalue", setValue)
+
+  const loading = useSelector((state) => state.hotelsReducer.loading )
+
 
   let api_key = process.env.REACT_APP_GOOGLE_KEY
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setLoading(false)
-    dispatch(fetchGeocoder(value));
-    setLoading(true)
+    dispatch(isLoading())
+    dispatch(fetchGeocoder(locationText))
+
   };
 
   if (typeof window !== "undefined" && !loaded.current) {
@@ -123,18 +126,17 @@ function GoogleMaps() {
           filterOptions={(x) => x}
           options={options}
           autoComplete
-          loading={loading}
-          loadingText
           includeInputInList
           filterSelectedOptions
           value={value}
-
           onChange={(event, newValue) => {
             setOptions(newValue ? [newValue, ...options] : options);
             setValue(newValue);
+
           }}
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
+            setLocationText(event.target.value);
           }}
           renderInput={(params) => (
             <TextField
@@ -158,7 +160,10 @@ function GoogleMaps() {
             return (
               <div
                 style={{ width: "100%" }}
-                onClick={() => dispatch(fetchGeocoder(option.description))}
+                onClick={() => {
+                  dispatch(isLoading())
+                  dispatch(fetchGeocoder(option.description))}
+              }
               >
                 <Grid container alignItems="center">
                   <Grid item>
@@ -185,6 +190,15 @@ function GoogleMaps() {
           }}
         />
       </form>
+      {loading && <div className='loader'>
+                <h2>Loading...</h2>
+                <Loader
+                    type="ThreeDots"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            </div>}
     </>
   );
 }
