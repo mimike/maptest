@@ -45,7 +45,7 @@ Here is the route for collecting hotel data for a user's location if they have t
 
 <a href="https://ibb.co/f8GTL0K"><img src="https://i.ibb.co/XykGMJd/Screen-Shot-2021-07-28-at-18-27-16.png" alt="Screen-Shot-2021-07-28-at-18-27-16" border="0"></a>
 
-The greatest challenge was implementing and learning TypeScript in a short amount of time. I strived to make it work, make it fast and make it clean and made a strategic decision to build something that worked while implementing new libraries and 3rd party APIs. The challenge of debugging TypeScript meant I had to make a critical decision of deploying with Javascript.
+The greatest challenge was implementing and learning TypeScript in a short amount of time. I strived to make it work, make it fast and make it clean and made a strategic decision to build something that worked while implementing new libraries and 3rd party APIs. The challenge of debugging TypeScript meant I had to make a critical decision of deploying with Javascript. 
 
 ## UI Design
 
@@ -86,18 +86,20 @@ Finally, the controller- we can think of the controller as the client side JS - 
 
 ## Setup
 1. Clone repo `git clone https://github.com/mimike/mapstest.git .`
-2. Install dependencies
+2. Run this command under the root directory to install backend dependences
 
       ```bash
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
       ```
+   Run this command from the frontend directory
+   
+      ```bash
+      npm install
+      ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
-
-4. Create a **.env** file based on the example with proper settings for your
-   development environment
-    - Install packages `npm install`
-    - Start dev server `npm start`
+    - Start backend server `flask run`
+    - Start client server `npm start`
     - Note: The [Google API](https://console.cloud.google.com/apis/library?project=genuine-tuner-154003&rif_reserved) was used to collect this data. Create a `.env` file in root dir and add your Google API key as `REACT_APP_API_KEY`
 
