@@ -28,8 +28,13 @@
 
 ## How to Use Travelp
 
-1.  Go to  [https://travelp-review.herokuapp.com/](https://travelp-review.herokuapp.com/)
-2.  Turn your browser location on to search by location or search by destination.
+
+1.  Turn your browser location on to use Travelp's geolocation feature
+2.  Go to  [https://travelp-review.herokuapp.com/](https://travelp-review.herokuapp.com/)
+3.  Search by destination or current location
+
+<br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/bvK910s/Screen-Shot-2021-07-31-at-17-11-54.png" alt="Screen Shot 2021-07-31 at 17.11.54" border="0"></a><br />
 
 ## Main Technical Features
 
@@ -39,7 +44,7 @@ The Google API was used to collect this data.
 
 If users turn their browser's location on, we make a call to Google Places API with their location's latitude and longitude and the type set to lodging. The radius is set to 25140 meters. We make a second call to the Google Places API with the place id to collect data on hotel reviews.
 
-For users who choose to block their location, we collect their latitude and longitude by geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places. Material UI's Autocomplete component with Google Maps API and Places Library.
+For users who choose to block their location, we collect their latitude and longitude by geocoding the location they type into a search box. Users type into a search box which displays a dropdown of autocomplete locations by making a call to https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places. 
 
 Here is the route for collecting hotel data for a user's location if they have their browser's location turned on:
 
@@ -49,7 +54,14 @@ The greatest challenge was implementing and learning TypeScript in a short amoun
 
 ## UI Design
 
-The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTML.
+The app is designed to be accessibility, mobile and desktop friendly and makes use of semantic HTML. 
+The following Material-UI components were utilized in the application. 
+* Icons
+* Button
+* Avatar
+* Grid
+* Autocomplete
+* Typography
 
 
 ### Mobile View:
@@ -62,6 +74,9 @@ The app is designed to be accessibility, mobile and desktop friendly and makes u
 ### Material UI Autocomplete Dropdown:
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/Jpw0tWR/Screen-Shot-2021-07-28-at-17-50-31.png" alt="Screen-Shot-2021-07-28-at-17-50-31" border="0"></a>
+
+### Browser Location Alert
+<a href="https://ibb.co/QNDc7gw"><img src="https://i.ibb.co/fpDSVgw/Screen-Shot-2021-07-31-at-17-09-21.png" alt="Screen-Shot-2021-07-31-at-17-09-21" border="0"></a>
 
 ### Loading Indicator:
 
