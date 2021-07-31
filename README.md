@@ -62,6 +62,7 @@ The following Material-UI components were utilized in the application.
 * Grid
 * Autocomplete
 * Typography
+* TextField
 
 
 ### Mobile View:
