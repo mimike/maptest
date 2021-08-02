@@ -34,3 +34,4 @@ def user_location(location):
     data = data1.json()
     # grab the lat/lng
     return data["results"][0]["geometry"]["location"]
+
